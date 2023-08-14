@@ -40,5 +40,9 @@ public class BirdScript : MonoBehaviour
         birdIsAlive = false;
     }
 
+    public bool isAlive() {
+        return birdIsAlive;
+    }
+
    
 }
