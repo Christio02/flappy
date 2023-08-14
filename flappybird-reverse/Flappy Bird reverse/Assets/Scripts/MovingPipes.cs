@@ -9,6 +9,7 @@ public class MovingPipes : MonoBehaviour
     private float deadZone = -20;
 
     private BirdScript bird;
+
     void Start()
     {
         
