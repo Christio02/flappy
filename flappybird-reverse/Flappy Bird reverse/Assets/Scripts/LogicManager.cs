@@ -14,6 +14,8 @@ public class LogicManager : MonoBehaviour
     public AudioSource scoreUpFX;
     public AudioSource gameOverFX;
 
+    private bool hasPlayedGameOverSound = false; // to not play game over sound anymore
+
     [ContextMenu("Increase score!")]
 
     void Start() {
@@ -33,13 +35,17 @@ public class LogicManager : MonoBehaviour
 
 
     public void restartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Loads the game scene over
     }
 
 
     public void gameOver() {
         gameOverScreen.SetActive(true);
-        gameOverFX.Play();
+        if (!hasPlayedGameOverSound) { // check if sound has played
+            gameOverFX.Play();
+            hasPlayedGameOverSound = true;
+        }
+        
        
         
     }

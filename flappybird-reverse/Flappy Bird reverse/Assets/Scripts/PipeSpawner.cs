@@ -5,11 +5,15 @@ using UnityEngine;
 public class PipeSpawner : MonoBehaviour
 {
     public GameObject pipe;
-    private float spawnRate = 3 ;
+    private float spawnRate = 3;
     private float timer = 0;
+
+    private float spawnChance = 80f;
+
+    public GameObject closedPipe;
     
 
-    public float heightOffset = 0.01f;
+    public float heightOffset = 2f;
 
     private Camera mainCamera;
 
@@ -40,8 +44,14 @@ public class PipeSpawner : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;
- 
-        Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+        int numGenerated = Random.Range(0, 100);
+
+        if (numGenerated > spawnChance) {
+            Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+        } else {
+              Instantiate(closedPipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+        }
+      
 
        
     }
