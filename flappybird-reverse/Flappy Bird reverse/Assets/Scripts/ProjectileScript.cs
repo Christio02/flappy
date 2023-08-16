@@ -7,12 +7,16 @@ public class ProjectileScript : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeTime = 6f;
+    public float cooldown = 2f;
+
    
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
         Destroy(gameObject, lifeTime);
+      
+        
     }
 
     // Update is called once per frame
@@ -30,4 +34,7 @@ public class ProjectileScript : MonoBehaviour
             Destroy(gameObject);
         }   
     }
+
+
+   
 }

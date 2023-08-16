@@ -1,4 +1,7 @@
 
+using System.Collections;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,7 +21,15 @@ public class BirdScript : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform projectileSpawn;
 
-    private  float offsetProjectile = 0.4f;
+    private float offsetProjectile = 0.4f;
+
+    public float cooldown = 2f;
+
+    private bool canSpawnProjectile = true;
+
+
+
+    
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManager>();
@@ -40,6 +51,8 @@ public class BirdScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) {
             Vector3 pos = new Vector3(transform.position.x + offsetProjectile, transform.position.y, transform.position.z);
             spawnProjectile(pos);
+            
+           
         }
        
     }
@@ -56,7 +69,22 @@ public class BirdScript : MonoBehaviour
     }
 
     void spawnProjectile(Vector3 spawnPos) {
-        Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        if (canSpawn()) {
+    	Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        logic.playShotgun();
+        canSpawnProjectile = false;
+        StartCoroutine(Cooldown());
+        }
+      
+    
+    }
+    IEnumerator Cooldown() {
+        yield return new WaitForSeconds(cooldown);
+        canSpawnProjectile = true;
+    }
+
+    public bool canSpawn() {
+        return canSpawnProjectile;
     }
 
    

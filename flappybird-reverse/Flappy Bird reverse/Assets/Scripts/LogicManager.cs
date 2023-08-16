@@ -13,8 +13,11 @@ public class LogicManager : MonoBehaviour
 
     public AudioSource scoreUpFX;
     public AudioSource gameOverFX;
+    public AudioSource shotgunFX;
 
     private bool hasPlayedGameOverSound = false; // to not play game over sound anymore
+
+    
 
     [ContextMenu("Increase score!")]
 
@@ -32,6 +35,10 @@ public class LogicManager : MonoBehaviour
        
     }
 
+    public void playShotgun() {
+        shotgunFX.Play();
+    }
+
 
 
     public void restartGame() {
@@ -45,10 +52,9 @@ public class LogicManager : MonoBehaviour
             gameOverFX.Play();
             hasPlayedGameOverSound = true;
         }
-        
-       
-        
     }
+
+
 
     public void startGame() {
         SceneManager.LoadScene("Game");
