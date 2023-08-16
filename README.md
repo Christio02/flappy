@@ -1,2 +1,2 @@
 # flappy
-First game made xD
+First game made
