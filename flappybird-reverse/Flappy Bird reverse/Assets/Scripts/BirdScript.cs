@@ -27,6 +27,9 @@ public class BirdScript : MonoBehaviour
 
     private bool canSpawnProjectile = true;
 
+    private float rotateDeath = 200f;
+    private float deathTime = 5f;
+
 
 
     
@@ -53,6 +56,10 @@ public class BirdScript : MonoBehaviour
             spawnProjectile(pos);
             
            
+        }
+        if (!isAlive()) {
+            transform.Rotate(Vector3.forward, rotateDeath * Time.deltaTime);
+            Destroy(gameObject, deathTime);
         }
        
     }
