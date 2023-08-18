@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class LogicManager : MonoBehaviour
 {
     public int playerScore;
     public Text score;
+    [SerializeField] TextMeshProUGUI highScoreText;
+
     public GameObject gameOverScreen;
     private BirdScript bird;
     
@@ -17,22 +20,34 @@ public class LogicManager : MonoBehaviour
 
     private bool hasPlayedGameOverSound = false; // to not play game over sound anymore
 
-    
-
-    [ContextMenu("Increase score!")]
 
     void Start() {
         bird = GameObject.FindGameObjectWithTag("Player").GetComponent<BirdScript>(); // need to find the gameobject, and then retrieve the script
+
+        // update highscore at start
+        updateHighScoreText();
+
         
     }
     public void addScore(int scoreToAdd) {
         if (bird.isAlive()) { // check if bird is alive always, otherwise do not increase score
             playerScore += scoreToAdd;
             score.text = playerScore.ToString();
+            checkHighScore();
             scoreUpFX.Play();
         }
        
        
+    }
+ 
+    void checkHighScore() {
+        if (playerScore > PlayerPrefs.GetInt("HighScore", 0)) {
+            PlayerPrefs.SetInt("HighScore", playerScore);
+        }
+    }
+
+    void updateHighScoreText() {
+        highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
     }
 
     public void playShotgun() {
@@ -53,7 +68,6 @@ public class LogicManager : MonoBehaviour
             hasPlayedGameOverSound = true;
         }
     }
-
 
 
     public void startGame() {
