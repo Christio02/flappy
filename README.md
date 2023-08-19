@@ -1,4 +1,4 @@
-Flappy
+# Flappy
 Flappy is a 2D arcade game inspired by the popular Flappy Bird. The twist is that you control two birds at the same time, one with each arrow key. How long can you survive the obstacles?
 
 
