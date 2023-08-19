@@ -19,7 +19,4 @@ Flappy was developed by Christio02 as his first game project
 Feedback
 If you have any feedback or suggestions for Flappy, feel free to open an issue or a pull request on GitHub. You can also contact me via email at christopher.hoee@gmail.com
 
-Please follow the code of conduct and the contributing guide when collaborating on this project.
 
-License
-Flappy is licensed under the MIT License. See LICENSE for more details.
