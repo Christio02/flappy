@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
-    public float speed = 10f;
-    public float lifeTime = 6f;
-    public float cooldown = 2f;
-
+   [SerializeField] private float speed = 5f;
+   private float lifeTime = 6f;
+//    private float cooldown = 2f;
    
     void Start()
     {
@@ -29,7 +28,6 @@ public class ProjectileScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obstacle) {
         if (obstacle.gameObject.CompareTag("Obstacle")) {
-            Debug.Log("Hit!");
             Destroy(obstacle.gameObject);
             Destroy(gameObject);
         }   

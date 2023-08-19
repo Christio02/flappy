@@ -8,24 +8,24 @@ using System;
 
 public class LogicManager : MonoBehaviour
 {
-    public int playerScore;
+    [SerializeField] private int playerScore;
     public Text score;
     [SerializeField] TextMeshProUGUI highScoreText;
 
-    public GameObject gameOverScreen;
+    [SerializeField] private  GameObject gameOverScreen;
     private BirdScript bird;
     
 
-    public AudioSource scoreUpFX;
-    public AudioSource gameOverFX;
-    public AudioSource shotgunFX;
+    [SerializeField] private  AudioSource scoreUpFX;
+    [SerializeField] private  AudioSource gameOverFX;
+    [SerializeField] private  AudioSource shotgunFX;
 
     private bool hasPlayedGameOverSound = false; // to not play game over sound anymore
 
 
     void Start() {
         Scene currentScene = SceneManager.GetActiveScene (); // get current scene
-        String sceneName = currentScene.name; // get scene name
+        string sceneName = currentScene.name; // get scene name
 
         if (sceneName == "Game") { // Check if scene is game scene, then retrieve birdScript and updateHighscore fro playerPrefs
             bird = GameObject.FindGameObjectWithTag("Player").GetComponent<BirdScript>(); // need to find the gameobject, and then retrieve the script

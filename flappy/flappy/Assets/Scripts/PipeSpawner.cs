@@ -10,12 +10,10 @@ public class PipeSpawner : MonoBehaviour
 
     private float spawnChance = 80f;
 
-    public GameObject closedPipe;
+    [SerializeField] private GameObject closedPipe;
     
 
-    public float heightOffset = 2f;
-
-    private Camera mainCamera;
+    [SerializeField] private float heightOffset = 2f;
 
     void Start()
     {
@@ -49,7 +47,7 @@ public class PipeSpawner : MonoBehaviour
         if (numGenerated > spawnChance) {
             Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
         } else {
-              Instantiate(closedPipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+            Instantiate(closedPipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
         }
       
 

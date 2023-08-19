@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PipeMiddleScript : MonoBehaviour
 {
-    public LogicManager logic;
+    [SerializeField] private LogicManager logic;
+
+    private MovingPipes pipes;
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManager>();
+        pipes = GetComponentInParent<MovingPipes>();
     }
 
     // Update is called once per frame
@@ -19,6 +22,8 @@ public class PipeMiddleScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.layer == 3) {
             logic.addScore(1);
+
+            
         }
         
     }

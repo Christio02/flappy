@@ -8,22 +8,22 @@ using UnityEngine.UIElements;
 
 public class BirdScript : MonoBehaviour
 {
-    public Rigidbody2D birdRigid;
+    [SerializeField] private  Rigidbody2D birdRigid;
 
     // private GameObject objectBird;
 
-    public LogicManager logic;
+    [SerializeField] private  LogicManager logic;
 
     private float flapStrength = 3;
 
     private bool birdIsAlive = true;
 
-    public GameObject projectilePrefab;
-    public Transform projectileSpawn;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private  Transform projectileSpawn;
 
     private float offsetProjectile = 0.4f;
 
-    public float cooldown = 2f;
+    [SerializeField] private  float cooldown = 2f;
 
     private bool canSpawnProjectile = true;
 

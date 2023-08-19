@@ -5,12 +5,12 @@ using UnityEngine;
 public class CloudSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject cloud;
+    [SerializeField] private  GameObject cloud;
+
     private float spawnRate = 10;
     private float upperBound = 2;
     private float lowerBound = -5;
     private float timer = 0;
-    private 
     void Start()
     {
         spawnCloud();

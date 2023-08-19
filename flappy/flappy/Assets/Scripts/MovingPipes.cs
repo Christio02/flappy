@@ -18,13 +18,20 @@ public class MovingPipes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + Vector3.left * moveSpeed * Time.deltaTime;
+        movePipe(Vector3.left);
 
          if (transform.position.x < deadZone) {
             Destroy(gameObject);
         }
 
+
         
         
     }
+
+    public void movePipe(Vector3 direction) {
+        transform.position = transform.position + direction * moveSpeed * Time.deltaTime;
+    }
+
+    
 }
