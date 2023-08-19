@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+
 public class LogicManager : MonoBehaviour
 {
     public int playerScore;
@@ -22,10 +24,17 @@ public class LogicManager : MonoBehaviour
 
 
     void Start() {
-        bird = GameObject.FindGameObjectWithTag("Player").GetComponent<BirdScript>(); // need to find the gameobject, and then retrieve the script
+        Scene currentScene = SceneManager.GetActiveScene (); // get current scene
+        String sceneName = currentScene.name; // get scene name
 
-        // update highscore at start
-        updateHighScoreText();
+        if (sceneName == "Game") { // Check if scene is game scene, then retrieve birdScript and updateHighscore fro playerPrefs
+            bird = GameObject.FindGameObjectWithTag("Player").GetComponent<BirdScript>(); // need to find the gameobject, and then retrieve the script
+            // update highscore at start
+            updateHighScoreText();
+        }
+        
+
+        
 
         
     }
