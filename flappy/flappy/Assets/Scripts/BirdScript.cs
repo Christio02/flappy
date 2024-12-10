@@ -29,6 +29,7 @@ public class BirdScript : MonoBehaviour
 
     private float rotateDeath = 200f;
     private float deathTime = 5f;
+    
 
 
 
